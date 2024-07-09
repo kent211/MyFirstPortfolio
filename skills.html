@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Skills</title>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		/>
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="website icon" type="png" href="assets/web_logo.png" />
+		<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+		<style>
+			/* Global Styles */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				text-decoration: none;
+				border: none;
+				outline: none;
+				scroll-behavior: smooth;
+				color: var(--text-color);
+			}
+
+			:root {
+				--bg-color: #040404;
+				--second-bg-color: #212325;
+				--text-color: #ffffff;
+				--main-color: #37fd12;
+				--box-hover-color: #333;
+			}
+
+			html {
+				font-size: 62.5%;
+				overflow-x: hidden;
+			}
+
+			body {
+				background: var(--bg-color);
+				color: var(--text-color);
+				font-family: "Arial", sans-serif;
+			}
+
+			/* Header Styles */
+			.header {
+				background: var(--bg-color);
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 65px;
+				padding: 0 9%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				z-index: 100;
+			}
+
+			.header .logo {
+				font-size: 3.3rem;
+				color: var(--text-color);
+				font-weight: 700;
+				cursor: default;
+				text-decoration: none;
+			}
+
+			.navbar a {
+				font-size: 1.6rem;
+				color: var(--text-color);
+				margin-left: 4rem;
+				text-decoration: none;
+				transition: 0.3s;
+				nav-right: auto;
+				right: 0;
+			}
+
+			.navbar a:hover,
+			.navbar a.active {
+				color: var(--main-color);
+			}
+
+			#menu-icon {
+				font-size: 3.6rem;
+				color: var(--text-color);
+				display: none;
+			}
+
+			@media (max-width: 768px) {
+				#menu-icon {
+					display: block;
+				}
+				.navbar {
+					position: absolute;
+					top: 100%;
+					left: 0;
+					width: 100%;
+					padding: 1rem 3%;
+					background: var(--bg-color);
+					border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
+					box-shadow: 0.5rem 1rem rgba(0, 0, 0, 0.2);
+				}
+				.navbar a {
+					display: block;
+					font-size: 2rem;
+					margin: 3rem 0;
+				}
+			}
+
+			/* Skills Section Styles */
+			.skills-section {
+				padding: 100px 0;
+				text-align: center;
+			}
+
+			.skills-section .text-center img {
+				border: 5px solid var(--main-color);
+				padding: 5px;
+				border-radius: 50%;
+			}
+
+			.skills-section h2 {
+				font-size: 3.6rem;
+				margin-bottom: 20px;
+			}
+
+			.skills-container {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+
+			.skill-box {
+				background: var(--second-bg-color);
+				margin: 10px;
+				padding: 20px;
+				border-radius: 10px;
+				width: 150px;
+				text-align: center;
+				transition: background 0.3s;
+				cursor: pointer;
+				position: relative;
+				height: 50px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border: 2px solid transparent;
+			}
+
+			.skill-box h3 {
+				font-size: 1.6rem;
+			}
+
+			.skill-box p {
+				color: var(--main-color);
+				opacity: 0;
+				font-size: 1.4rem;
+				transition: opacity 0.3s;
+				position: absolute;
+			}
+
+			.skill-box.active {
+				background: var(--box-hover-color);
+				border-color: var(--main-color);
+			}
+
+			.skill-box.active h3 {
+				opacity: 0;
+			}
+
+			.skill-box.active p {
+				opacity: 1;
+			}
+
+			.skill-box .skill-content {
+				width: 100%;
+				height: 100%;
+				transition: transform 0.6s;
+				transform-style: preserve-3d;
+				position: absolute;
+				backface-visibility: hidden;
+			}
+
+			.skill-box .front {
+				background-color: #343a40;
+				color: #fff;
+			}
+
+			.skill-box .back {
+				background-color: #007bff;
+				color: #fff;
+				transform: rotateY(180deg);
+			}
+
+			.skill-box.flipped .skill-content {
+				transform: rotateY(180deg);
+			}
+
+			span {
+				color: var(--main-color);
+			}
+
+			@keyframes float {
+				0% {
+					transform: translateY(0);
+				}
+				50% {
+					transform: translateY(-10px);
+				}
+				100% {
+					transform: translateY(0);
+				}
+			}
+
+			.floating-image {
+				animation: float 3s ease-in-out infinite;
+			}
+
+			.skills-section {
+				padding: 50px 0;
+				text-align: center;
+			}
+
+			.skills-section h2 {
+				font-size: 36px;
+				margin-bottom: 20px;
+			}
+
+			.skills-container {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+				gap: 20px;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+
+			.skill-box {
+				background-color: var(--second-bg-color);
+				padding: 20px;
+				border: 1px solid var(--main-color);
+				border-radius: 12px 0;
+				text-align: center;
+				cursor: pointer;
+				perspective: 1000px; /* Enable 3D space */
+				transition: transform 0.5s;
+			}
+
+			.skill-inner {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				transform-style: preserve-3d;
+				transition: transform 0.5s;
+			}
+
+			.skill-box.active .skill-inner {
+				transform: rotateY(180deg);
+			}
+
+			.skill-front,
+			.skill-back {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				backface-visibility: hidden;
+			}
+
+			.skill-front {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: var(--second-bg-color);
+				border-radius: 8px;
+			}
+
+			.skill-back {
+				transform: rotateY(180deg);
+				/* transform: translateX(20px); */
+				margin-bottom: 200px;
+				display: flex;
+				margin-top: -15px;
+				justify-content: center;
+				align-items: center;
+				background-color: var(--box-hover-color);
+				padding: 20px;
+				border-radius: 8px;
+			}
+
+			/* *{
+            border: 1px solid red;
+        } */
+		</style>
+	</head>
+	<body>
+		<section class="skills-section">
+			<div class="text-center mb-4 mt-5">
+				<a href="index.html"
+					><img
+						src="assets/home(1).jpg"
+						alt="Profile Picture"
+						height="220px"
+						width="220px"
+						class="floating-image"
+				/></a>
+			</div>
+
+			<h1 style="font-size: 40px">My <span>Assets</span></h1>
+			<div class="skills-container">
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>JavaScript</h3>
+						</div>
+						<div class="skill-back">
+							<p>Intermediate</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>React</h3>
+						</div>
+						<div class="skill-back">
+							<p>Beginner</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>Vue 3</h3>
+						</div>
+						<div class="skill-back">
+							<p>Beginner</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>Nuxt.js</h3>
+						</div>
+						<div class="skill-back">
+							<p>Beginner</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>Node.js</h3>
+						</div>
+						<div class="skill-back">
+							<p>Beginner</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>MySQL</h3>
+						</div>
+						<div class="skill-back">
+							<p>Intermediate</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>HTML5</h3>
+						</div>
+						<div class="skill-back">
+							<p>Expert</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>CSS3</h3>
+						</div>
+						<div class="skill-back">
+							<p>Intermediate</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>Bootstrap</h3>
+						</div>
+						<div class="skill-back">
+							<p>Intermediate</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>Figma</h3>
+						</div>
+						<div class="skill-back">
+							<p>Beginner</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>UI/UX</h3>
+						</div>
+						<div class="skill-back">
+							<p>Beginner</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>C++</h3>
+						</div>
+						<div class="skill-back">
+							<p>Intermediate</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>Java</h3>
+						</div>
+						<div class="skill-back">
+							<p>Beginner</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-box" onclick="toggleSkill(this)">
+					<div class="skill-inner">
+						<div class="skill-front">
+							<h3>PHP</h3>
+						</div>
+						<div class="skill-back">
+							<p>Intermediate</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script>
+			function toggleSkill(element) {
+				element.classList.toggle("active");
+			}
+		</script>
+
+		<!-- Detailed Sections -->
+		<section class="more-details text-center">
+			<p style="font-size: 40px">My <span>Skills</span></p>
+
+			<section id="web-development-details" class="details-section container text-left">
+				<h1>Web Development</h1>
+				<p>
+					I specialize in building responsive and user-friendly websites using the latest
+					technologies like HTML, CSS, JavaScript, and various frameworks such as React
+					and Angular. My expertise includes:
+				</p>
+				<ul>
+					<li>HTML5 and CSS3 for creating modern, responsive layouts</li>
+					<li>JavaScript and TypeScript for dynamic and scalable applications</li>
+					<li>
+						Frameworks like React, Angular, and Vue for efficient front-end development
+					</li>
+					<li>Backend development using Node.js and Express</li>
+					<li>Database management with MongoDB and SQL</li>
+				</ul>
+			</section>
+
+			<section id="ui-ux-details" class="details-section container text-left">
+				<h1>UI / UX</h1>
+				<p>
+					I design intuitive user interfaces and experiences that enhance user
+					satisfaction and ensure seamless interaction with your products. My skills
+					include:
+				</p>
+				<ul>
+					<li>Wireframing and prototyping using tools like Figma and Adobe XD</li>
+					<li>Creating visually appealing designs that align with brand identity</li>
+					<li>Conducting user research and usability testing</li>
+					<li>Designing for accessibility and inclusive user experiences</li>
+					<li>Collaborating with developers to implement designs effectively</li>
+				</ul>
+			</section>
+
+			<section id="system-development-details" class="details-section container text-left">
+				<h1>System Development</h1>
+				<p>
+					With extensive experience in system development, I create scalable and efficient
+					systems tailored to meet specific business needs. My expertise includes:
+				</p>
+				<ul>
+					<li>Designing and implementing robust backend architectures</li>
+					<li>Developing RESTful APIs and microservices</li>
+					<li>Database design and optimization</li>
+					<li>System integration and automation</li>
+					<li>Ensuring security and data protection</li>
+				</ul>
+			</section>
+
+			<section id="creativity-details" class="details-section container text-left">
+				<h1>Creativity</h1>
+				<p>
+					My creative skills help in generating innovative ideas and solutions that set
+					your projects apart from the competition. I excel in:
+				</p>
+				<ul>
+					<li>Concept development and brainstorming</li>
+					<li>Graphic design and visual storytelling</li>
+					<li>Creating engaging content and marketing materials</li>
+					<li>Problem-solving with a creative approach</li>
+					<li>Thinking outside the box to deliver unique solutions</li>
+				</ul>
+			</section>
+
+			<section id="problem-solving-details" class="details-section container text-left">
+				<h1>Problem Solving</h1>
+				<p>
+					I excel at identifying issues and developing strategic solutions to overcome
+					challenges, ensuring project success. My approach to problem-solving includes:
+				</p>
+				<ul>
+					<li>Analyzing problems to identify root causes</li>
+					<li>Developing innovative and effective solutions</li>
+					<li>Implementing strategies to prevent future issues</li>
+					<li>Collaborating with teams to address challenges</li>
+					<li>Continuously improving processes and systems</li>
+				</ul>
+			</section>
+
+			<section id="communication-details" class="details-section container text-left">
+				<h1>Communication</h1>
+				<p>
+					Effective communication is key to project success. I ensure clear and consistent
+					communication with clients. My skills include:
+				</p>
+				<ul>
+					<li>Regular updates and progress reports</li>
+					<li>Active listening and understanding client needs</li>
+					<li>Facilitating meetings and discussions</li>
+					<li>Documenting and sharing important information</li>
+					<li>Maintaining transparency and trust</li>
+				</ul>
+			</section>
+		</section>
+
+		<style>
+			.more-details {
+				padding: 50px 0;
+				background-color: var(--second-bg-color);
+			}
+
+			.more-details h1 {
+				font-size: 36px;
+				margin-bottom: 20px;
+			}
+
+			.more-details p {
+				font-size: 18px;
+				margin-bottom: 30px;
+			}
+
+			.more-details ul {
+				list-style-type: none;
+				padding: 0;
+			}
+
+			.more-details ul li {
+				background: url("https://img.icons8.com/ios-filled/16/00C851/checkmark.png")
+					no-repeat left center;
+				padding-left: 25px;
+				margin-bottom: 10px;
+				font-size: 14px;
+			}
+
+			.details-section {
+				margin-bottom: 50px;
+			}
+
+			.more-details section {
+				background-color: var(--box-hover-color);
+				padding: 10px 20px;
+				border-radius: 10px;
+			}
+		</style>
+	</body>
+</html>

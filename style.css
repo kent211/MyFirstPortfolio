@@ -1,0 +1,585 @@
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        border: none;
+        outline: none;
+        scroll-behavior: smooth; 
+        /* border: 1px solid red; */
+        color: var(--text-color);
+    }
+
+    /* CSS FOR STORING THE COLORS */
+
+    :root{
+        --bg-color: #040404;
+        --second-bg-color: #212325;
+        --text-color: #Fff;
+        --main-color: #37FD12;
+    }
+
+    /* CSS FOR THE HTML FILE SECTION */
+
+    html{
+        font-size: 62.3%;
+        overflow-x: hidden;
+        color: var(--text-color);   
+    }
+
+    /* CSS FOR THE BODY OF THE HTML*/
+
+    body{
+        background: var(--bg-color);
+        color: var(--text-color);
+        
+    }
+
+    /* CSS FOR THE SECTION*/
+
+    section{
+        min-height: 100vh;
+        padding: 10rem 9% 2rem;
+        background: var(--bg-color);
+    }
+
+    /* CSS FOR THE IMAGES*/
+
+    img{
+        border-radius: 25px;
+        margin: 10px;
+    }
+
+        /* NAVBAR */
+    nav.navbar {
+        background: var(--bg-color);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 65px;
+        padding: 0 9%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+    }
+
+    .navbar-brand.logo {
+        font-size: 3.3rem;
+        color: var(--text-color);
+        font-weight: 700;
+        text-decoration: none;
+        line-height: 65px; /* Center the logo vertically */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1.6rem;
+        color: var(--text-color);
+        margin-left: 4rem;
+        text-decoration: none;
+        transition: .3s;
+        line-height: 65px; /* Center the links vertically */
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+        color: var(--main-color);
+    }
+
+    .navbar-toggler {
+        font-size: 2.4rem; /* Adjusted to fit better */
+        color: var(--text-color);
+    }
+
+    .navbar-toggler-icon {
+        font-size: 1.5rem; /* Ensure icon is visible */
+        color: var(--text-color);
+    }
+
+    /* Media query to handle responsive behavior */
+    @media (max-width: 991px) {
+        .navbar-nav .nav-link {
+            margin-left: 0;
+            margin-top: 1rem;
+            text-align: center;
+        }
+    }
+
+
+    .navbar-nav .nav-link.active{
+        color: var(--main-color);
+    }
+
+
+    /* HOME */
+
+    .home{
+        background: var(--bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .home-content h3{
+        font-size: 3.2rem;
+        font-weight: 700;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+    }
+
+    /* Add the animation properties to .home-content */
+    .home-content.active, .home-img.active {
+        /* Set initial properties for the animation */
+        opacity: 0;
+        transform: translateX(-100%);
+        animation: slideIn 1s forwards;
+        /* 1s duration, forwards fill mode */
+
+        /* Other styles for .home-content */
+        /* ... */
+    }
+
+    /* Define the animation using @keyframes */
+    @keyframes slideIn {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+
+    .home-content h3:nth-of-type(2){
+        margin-bottom: 2rem;
+    }
+
+    span{
+        color: var(--main-color);
+        margin: 0;
+        background-color: transparent;
+    }
+
+    .home-content h1{
+        font-size: 5.6rem;
+        font-weight: 700;
+        line-height: 1.3;
+        color: var(--text-color);
+    }
+
+    .home-img img{
+        width: 35vw;
+        border-radius: 25px;
+        margin-left: 150px;
+    }
+
+    .home-content p{
+        font-size: 1.6rem;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+    }
+
+    .social-media a i{
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 4rem;
+        height: 4rem;
+        background: transparent;
+        border: .2rem solid var(--main-color);
+        border-radius: 50%;
+        font-size: 2rem;
+        color: var(--main-color);
+        margin: 3rem 1.5rem 3rem 0;
+        transition: .5s ease;
+    }
+
+    .social-media a i:hover{
+        background: var(--main-color);
+        color: var(--second-bg-color);
+        box-shadow: 0 0 1rem var(--main-color);
+    }
+
+    .button .btn {
+        display: inline-block;
+        padding: 1rem 2.8rem;
+        background: var(--main-color);
+        border-radius: 4rem;
+        box-shadow: 0 0 1rem var(--main-color);
+        font-size: 1.6rem;
+        color: var(--second-bg-color);
+        letter-spacing: 0.1rem;
+        font-weight: 600;
+        transition: .9s ease;
+    }
+
+    .button .btn:hover{
+        box-shadow: none;
+        border: .4 solid #fff;
+    }
+
+    /* CSS FOR THE ABOUT SECTION */
+
+    .about-content h2, h3{
+        background-color: var(--second-bg-color);
+        
+    }
+
+    .about{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+        background-color: var(--second-bg-color);
+    }
+
+    .about-img img{
+        width: 35vw;
+    }
+
+    .about-content.active,
+    .about-img.active {
+        opacity: 0;
+        transform: translateX(100%);
+        animation: slideIn 1s forwards;
+    }
+
+    @keyframes slideIn {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .heading{
+        text-align: center;
+        font-size: 4.5rem;
+    }
+
+    .about-content h2{
+        text-align: left;
+        line-height: 1.2;
+    }
+
+    .about-content h3{
+        font-size: 2.6rem;
+    }
+
+    .about-content p{
+        font-size: 1.6rem;
+        margin: 2rem 0 3rem;
+    }
+
+    /* CSS FOR THE SKILLS SECTION */
+
+    .skills h2 {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .services-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin: 19px;
+
+    }
+
+    .skills .container .col-md-6:hover{
+        transform: scale(1.03);
+        transition: all 0.45s ease-in-out;
+    }
+
+    .services-box {
+        flex: 1 1 30rem;
+        background: var(--second-bg-color);
+        padding: 3rem 2rem 4rem;
+        border-radius: 2rem;
+        text-align: center;
+        border: 3px solid var(--bg-color);
+        margin: 3px;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .services-box:hover {
+        transform: scale(1.05);
+        border-color: var(--main-color); /* Change border color on hover */
+    }
+
+    .services-box a {
+        color: #040404;
+    }
+
+    .services-box i {
+        font-size: 7rem;
+        color: var(--main-color);
+    }
+
+    .services-box h3 {
+        font-size: 2.6rem;
+    }
+
+    .services-box p {
+        font-size: 1.6rem;
+        margin: 1rem 0 3rem;
+    }
+
+    .btn {
+        background-color: var(--main-color);
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 2rem;
+        color: #fff;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: darken(var(--main-color), 10%);
+    }
+
+
+
+
+    /* PORTFOLIO STYLE */
+
+    .portfolio {
+        background-color: var(--second-bg-color);
+        position: relative;
+    }
+
+    .portfolio h2 {
+        margin-bottom: 3rem;
+        margin-top: -5rem;
+    }
+
+    .carousel-caption {
+        bottom: 200px;
+        z-index: 10; /* Ensure it's above the overlay */
+        margin-bottom: 230px;
+        transition: .9s ease;
+    }
+
+    .carousel-inner:hover .carousel-caption {
+        transform: scale(1.1);
+    }
+
+    .carousel-item img {
+        transition: .9s ease;
+        width: 100%;
+        height: 900px; /* Maintain the same height for all images */
+        object-fit: cover; /* Make sure images cover the container */
+        transform: scale(0.9);
+    }
+
+    .carousel-inner:hover img {
+        transform: scale(1.1);
+    }
+
+    .carousel-caption h5 {
+        font-size: 55px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 10px;
+        z-index: 10; /* Ensure it's above the overlay */
+    }
+
+    .carousel-caption p {
+        width: 60%;
+        margin: auto;
+        font-size: 20px;
+        line-height: 1.9;
+        margin-bottom: 30px;
+    }
+
+    .carousel-item {
+        height: 100vh;
+        min-height: 300px;
+        padding-bottom: -100px;
+        margin-bottom: -80px;
+        margin-top: -50px;
+    }
+
+    .carousel-item:hover .carousel-caption {
+        transform: translateY(0);
+    }
+
+    .carousel-inner {
+        border-radius: 25px;
+        position: relative; /* Added for overlay */
+    }
+
+    .carousel-inner .carousel-caption button {
+        z-index: 10; /* Ensure it's above the overlay */
+    }
+
+    .overlay {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: linear-gradient(rgba(0, 0, 0, .1), var(--main-color));
+        z-index: 5; /* Lower than the caption */
+        border-radius: 25px; /* Match the border-radius of carousel-inner */
+    }
+
+        /* Responsive Font Sizes */
+    @media (max-width: 768px) {
+        .carousel-caption h5 {
+            font-size: 36px; /* Adjust font size for smaller screens */
+        }
+        
+        .carousel-caption p {
+            font-size: 16px; /* Adjust font size for smaller screens */
+            width: 80%; /* Adjust width as needed */
+        }
+    }
+
+
+    /* Contact Section */
+    .contact h2{
+        margin-bottom: 3rem;
+    }
+
+    .contact form{
+        max-width: 70rem;
+        margin: 1rem auto;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .contact form .input-box{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .contact form .input-box input,
+    .contact form textarea{
+        width: 100%;
+        padding: 1.5rem;
+        font-size: 1.6rem;
+        color: var(--text-color);
+        background-color: var(--second-bg-color);
+        border-radius: .8rem;
+        margin: .7rem 0;
+    }
+
+    .contact form .input-box input{
+        width: 49%;
+    }
+
+    .contact form textarea{
+        resize: none;
+    }
+
+    .contact form .button .btn{
+        margin-top: 2rem;
+        cursor: pointer;
+        clear: both;
+    }
+
+    .custom-button {
+        background-color: var(--main-color); /* Change this to match your website's theme */
+        color: white;
+        padding: 10px 45px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        display: inline-block;
+        display: flex;
+        place-content: center;
+        outline: none;
+        border: none;
+        justify-content: center;
+        margin-right: 160px;
+    }
+
+    .custom-button:hover {
+        background-color: #45a049; /* Change this to match your website's theme */
+    }
+
+    /* Style of Footer */
+
+
+    .footer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 2rem 9%;
+        background-color: var(--second-bg-color);
+
+    }
+
+    .footer-text p{
+        font-size: 1.6rem;
+
+    }
+
+    .footer-iconTop{
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 .10rem;
+        background: var(--main-color);
+        border-radius: .5rem;
+        max-height: max-content;
+    }
+
+    .footer-iconTop{
+        font-size: 2.4rem;
+        color: var(--second-bg-color);
+        padding: 7px;
+        transition: .5s ease;
+    }
+
+    .footer-iconTop:hover{
+        box-shadow: 0 0 1rem var(--main-color);
+    }
+
+
+
+
+    /* BREAK POINTS */
+
+    @media (max-width: 1200px){
+        html{
+            font-size: 55%;
+        }
+    }
+
+    @media (max-width: 991px){
+        .header{
+            padding: 2rem 3%;
+        }
+        section{
+            padding: 10rem 3% 2rem;
+        }
+        footer{
+            padding: 2rem 3%;
+        }
+    }
+
+    @media (max-width: 768px){
+        #menu-icon{
+            display: block;
+        }
+        .navbar{
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            padding: 1rem 3%;
+            background: var(--bg-color);
+            border-top: .1rem solid rgba(0, 0, 0, 0.2);
+            box-shadow: 0.5rem 1rem rgba(0, 0, 0, .2);
+        }
+        .navbar a{
+            display: block;
+            font-size: 2rem;
+            margin: 3rem 0; 
+        }
+    }
